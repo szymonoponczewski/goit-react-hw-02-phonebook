@@ -14,10 +14,19 @@ export class App extends Component {
     number: "",
   };
 
+  handleDelete = (id) => {
+    const { contacts } = this.state;
+    const updatedContacts = contacts.filter((entry) => entry.id !== id);
+    this.setState({
+      contacts: updatedContacts,
+    });
+  };
+
   handleFilterChange = (event) => {
     this.setState({
       filter: event.target.value,
     });
+    console.log(event.target.value);
   };
 
   handleChange = (event) => {
@@ -101,6 +110,9 @@ export class App extends Component {
           {filteredEntries.map((entry) => (
             <li key={entry.id}>
               {entry.name}: {entry.number}
+              <button onClick={() => this.handleDelete(entry.id)}>
+                Delete
+              </button>
             </li>
           ))}
         </ul>
