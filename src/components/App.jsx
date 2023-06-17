@@ -15,7 +15,6 @@ export class App extends Component {
   };
 
   handleFilterChange = (event) => {
-    const { value } = event.target;
     this.setState({
       filter: event.target.value,
     });
@@ -50,11 +49,15 @@ export class App extends Component {
     this.setState({
       contacts: [...contacts, newEntry],
       name: "",
+      number: "",
     });
   };
 
   render() {
-    const { contacts, name, number } = this.state;
+    const { contacts, name, number, filter } = this.state;
+    const filteredEntries = contacts.filter((entry) =>
+      entry.name.toLowerCase().includes(filter.toLowerCase())
+    );
 
     return (
       <div>
@@ -95,7 +98,7 @@ export class App extends Component {
           onChange={this.handleFilterChange}
         />
         <ul>
-          {contacts.map((entry) => (
+          {filteredEntries.map((entry) => (
             <li key={entry.id}>
               {entry.name}: {entry.number}
             </li>
