@@ -1,0 +1,18 @@
+.button {
+  background-color: #ff5500;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.button:not(:last-child) {
+  margin-right: 15px;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
